@@ -1,70 +1,129 @@
-# Getting Started with Create React App
+Legal Document Assistant
+This project is a web application designed to help users create and manage legal documents. It features user authentication, document creation, and secure handling of user data using JWT for authorization.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Table of Contents
+Features
+Technologies Used
+Setup and Installation
+Usage
+Endpoints
+Frontend Pages
+License
+Features
+User Registration and Login
+JWT Authentication
+Create and Retrieve Legal Documents
+Secure CORS Configuration
+Technologies Used
+Backend
+Java
+Spring Boot
+Spring Security
+JPA (Hibernate)
+MySQL
+Frontend
+React.js
+Axios
+React Router
+Setup and Installation
+Backend Setup
+Clone the Repository
 
-## Available Scripts
+bash
+Copy code
+git clone https://github.com/your-repo/legal-document-assistant.git
+cd legal-document-assistant
+Configure MySQL Database
 
-In the project directory, you can run:
+Update the application.properties file with your MySQL database credentials.
+properties
+Copy code
+spring.datasource.url=jdbc:mysql://localhost:3306/legaldocassistant
+spring.datasource.username=yourusername
+spring.datasource.password=yourpassword
+spring.jpa.hibernate.ddl-auto=update
+Build and Run the Backend
 
-### `npm start`
+bash
+Copy code
+./mvnw clean install
+./mvnw spring-boot:run
+Frontend Setup
+Navigate to the Frontend Directory
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+bash
+Copy code
+cd frontend
+Install Dependencies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+Copy code
+npm install
+Run the Frontend Application
 
-### `npm test`
+bash
+Copy code
+npm start
+Usage
+Register a New User
+Endpoint: POST /auth/register
+Body:
+json
+Copy code
+{
+    "username": "testuser",
+    "password": "testpassword"
+}
+Authenticate a User
+Endpoint: POST /auth/authenticate
+Body:
+json
+Copy code
+{
+    "username": "testuser",
+    "password": "testpassword"
+}
+Response: JWT token
+Create a Document
+Endpoint: POST /api/documents
+Headers:
+http
+Copy code
+Authorization: Bearer <your_jwt_token>
+Content-Type: application/json
+Body:
+json
+Copy code
+{
+    "documentType": "Contract",
+    "partyOne": "Alice",
+    "partyTwo": "Bob",
+    "agreementTerms": "Terms of the agreement"
+}
+Retrieve Documents
+Endpoint: GET /api/documents
+Headers:
+http
+Copy code
+Authorization: Bearer <your_jwt_token>
+Frontend Pages
+App.js
+Renders LandingPage.js with options to signup or login.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+LandingPage.js
+Landing page that directs the user to either the signup or login page.
 
-### `npm run build`
+Signup.js
+Handles user registration. Redirects to the landing page on successful registration, otherwise displays an error message.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Login.js
+Handles user login. On successful authentication, stores the JWT token and redirects to HomePage.js. Displays an error message on failure.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+HomePage.js
+Displays a form for creating documents and a button to retrieve documents. Automatically includes the JWT token in the header for authorization.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+DocumentForm.js
+Form component for creating a new document. Sends the document data to the backend using the JWT token for authorization.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+License
+This project is licensed under the MIT License. See the LICENSE file for details.

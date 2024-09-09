@@ -1,129 +1,46 @@
-Legal Document Assistant
+# **Legal Document Assistant**
+
 This project is a web application designed to help users create and manage legal documents. It features user authentication, document creation, and secure handling of user data using JWT for authorization.
 
-Table of Contents
-Features
-Technologies Used
-Setup and Installation
-Usage
-Endpoints
-Frontend Pages
-License
-Features
-User Registration and Login
-JWT Authentication
-Create and Retrieve Legal Documents
-Secure CORS Configuration
-Technologies Used
-Backend
-Java
-Spring Boot
-Spring Security
-JPA (Hibernate)
-MySQL
-Frontend
-React.js
-Axios
-React Router
-Setup and Installation
-Backend Setup
-Clone the Repository
+## **Table of Contents**
 
-bash
-Copy code
-git clone https://github.com/your-repo/legal-document-assistant.git
-cd legal-document-assistant
-Configure MySQL Database
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup and Installation](#setup-and-installation)
+- [Usage](#usage)
+- [Endpoints](#endpoints)
+- [Frontend Pages](#frontend-pages)
+- [License](#license)
 
-Update the application.properties file with your MySQL database credentials.
-properties
-Copy code
-spring.datasource.url=jdbc:mysql://localhost:3306/legaldocassistant
-spring.datasource.username=yourusername
-spring.datasource.password=yourpassword
-spring.jpa.hibernate.ddl-auto=update
-Build and Run the Backend
+## **Features**
 
-bash
-Copy code
-./mvnw clean install
-./mvnw spring-boot:run
-Frontend Setup
-Navigate to the Frontend Directory
+- **User Registration and Login**
+- **JWT Authentication**
+- **Create and Retrieve Legal Documents**
+- **Secure CORS Configuration**
 
-bash
-Copy code
-cd frontend
-Install Dependencies
+## **Technologies Used**
 
-bash
-Copy code
-npm install
-Run the Frontend Application
+### **Backend**
 
-bash
-Copy code
-npm start
-Usage
-Register a New User
-Endpoint: POST /auth/register
-Body:
-json
-Copy code
-{
-    "username": "testuser",
-    "password": "testpassword"
-}
-Authenticate a User
-Endpoint: POST /auth/authenticate
-Body:
-json
-Copy code
-{
-    "username": "testuser",
-    "password": "testpassword"
-}
-Response: JWT token
-Create a Document
-Endpoint: POST /api/documents
-Headers:
-http
-Copy code
-Authorization: Bearer <your_jwt_token>
-Content-Type: application/json
-Body:
-json
-Copy code
-{
-    "documentType": "Contract",
-    "partyOne": "Alice",
-    "partyTwo": "Bob",
-    "agreementTerms": "Terms of the agreement"
-}
-Retrieve Documents
-Endpoint: GET /api/documents
-Headers:
-http
-Copy code
-Authorization: Bearer <your_jwt_token>
-Frontend Pages
-App.js
-Renders LandingPage.js with options to signup or login.
+- Java
+- Spring Boot
+- Spring Security
+- JPA (Hibernate)
+- MySQL
 
-LandingPage.js
-Landing page that directs the user to either the signup or login page.
+### **Frontend**
 
-Signup.js
-Handles user registration. Redirects to the landing page on successful registration, otherwise displays an error message.
+- React.js
+- Axios
+- React Router
 
-Login.js
-Handles user login. On successful authentication, stores the JWT token and redirects to HomePage.js. Displays an error message on failure.
+## **Setup and Installation**
 
-HomePage.js
-Displays a form for creating documents and a button to retrieve documents. Automatically includes the JWT token in the header for authorization.
+### **Backend Setup**
 
-DocumentForm.js
-Form component for creating a new document. Sends the document data to the backend using the JWT token for authorization.
+1. **Clone the Repository**
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+   ```bash
+   git clone https://github.com/your-repo/legal-document-assistant.git
+   cd legal-document-assistant
